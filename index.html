@@ -10,55 +10,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- 2025 MODERN THEME VARIABLES --- */
+        /* --- THEME VARIABLES --- */
         :root {
             --bg-dark: #0a0a0a;
             --surface-dark: #121212;
-            --primary-gradient: linear-gradient(135deg, #FFD700 0%, #FDB931 100%); /* Premium Gold */
+            --primary-gradient: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: 1px solid rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
             --text-muted: #a0a0a0;
-            --accent-blue: #3b82f6;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 20%),
-                              radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 20%);
+            background-image: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 20%);
         }
 
-        /* --- GLASSMORPHISM NAVBAR --- */
+        /* --- NAVBAR WITH LOGO --- */
         nav {
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(12px);
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(10, 10, 10, 0.9);
             border-bottom: var(--glass-border);
-            padding: 1rem 5%;
+            padding: 0.8rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.5rem;
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* LOGO SETTING */
+        .nav-logo {
+            height: 50px; /* Adjust size */
+            width: auto;
+            border-radius: 50%;
+            border: 2px solid #FFD700;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
             font-weight: 900;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .call-btn {
@@ -72,8 +78,7 @@
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
             transition: 0.3s;
         }
-        
-        .call-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 215, 0, 0.5); }
+        .call-btn:hover { transform: scale(1.05); }
 
         /* --- HERO SECTION --- */
         .hero {
@@ -89,23 +94,27 @@
         .hero-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1507842217153-e1460330c04f?q=80&w=1000&auto=format&fit=crop') center/cover;
-            opacity: 0.4;
+            /* Make sure to upload hero.jpg */
+            background: url('./hero.jpg') center/cover; 
+            opacity: 0.5;
             filter: brightness(0.6);
             z-index: -1;
         }
+        /* Fallback color if image fails */
+        .hero { background-color: #000; }
 
         .hero-content h1 {
             font-size: 3.5rem;
             line-height: 1.1;
             margin-bottom: 1rem;
             text-transform: uppercase;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
 
         .hero-content h1 span {
             display: block;
             font-size: 1.2rem;
-            color: var(--text-muted);
+            color: #FFD700;
             letter-spacing: 4px;
             margin-bottom: 10px;
             font-weight: 500;
@@ -113,7 +122,7 @@
 
         .hero-price-tag {
             display: inline-block;
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(0, 0, 0, 0.6);
             border: 1px solid #FFD700;
             color: #FFD700;
             padding: 10px 25px;
@@ -124,7 +133,7 @@
             backdrop-filter: blur(5px);
         }
 
-        /* --- SECTIONS GENERAL --- */
+        /* --- SECTIONS --- */
         .section { padding: 4rem 5%; }
         .section-title {
             text-align: center;
@@ -135,7 +144,24 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- GLASS CARDS (Shifts & Team) --- */
+        /* --- POSTER SECTION (Landscape Image) --- */
+        .poster-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #FFD700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.15);
+        }
+        
+        .poster-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- GRID SYSTEMS --- */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -152,122 +178,41 @@
             position: relative;
             overflow: hidden;
         }
+        .glass-card:hover { background: rgba(255,255,255,0.1); border-color: #FFD700; }
 
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-            border-color: #FFD700;
-        }
+        .card-main-text { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
+        .card-sub-text { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 10px; }
+        .card-icon { position: absolute; right: 20px; top: 20px; font-size: 3rem; opacity: 0.1; color: #fff; }
+        .role-badge { display: inline-block; background: rgba(255, 215, 0, 0.15); color: #FFD700; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
 
-        .card-main-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 5px;
-        }
-        .card-sub-text {
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        .card-icon {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            font-size: 3rem;
-            opacity: 0.1;
-            color: #fff;
-        }
-        
-        /* Specific Styles for Team Roles */
-        .role-badge {
-            display: inline-block;
-            background: rgba(255, 215, 0, 0.15);
-            color: #FFD700;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        /* --- FEATURES GRID --- */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 15px;
-        }
-
-        .feature-item {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid #333;
-        }
-        .feature-item i {
-            font-size: 1.8rem;
-            color: #FFD700;
-            margin-bottom: 10px;
-        }
-        .feature-item p { font-size: 0.9rem; font-weight: 500; }
+        /* --- FEATURES --- */
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .feature-item { background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #333; }
+        .feature-item i { font-size: 1.8rem; color: #FFD700; margin-bottom: 10px; }
 
         /* --- FOOTER --- */
-        footer {
-            background: #000;
-            padding: 3rem 5% 6rem;
-            border-top: 1px solid #333;
-            text-align: center;
-        }
-
-        .contact-links a {
-            display: block;
-            color: var(--text-muted);
-            text-decoration: none;
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
-        .contact-links i { color: #FFD700; width: 25px; }
-
-        /* --- FLOATING WHATSAPP BUTTON --- */
+        footer { background: #000; padding: 3rem 5% 6rem; border-top: 1px solid #333; text-align: center; }
+        .footer-logo { height: 80px; margin-bottom: 20px; opacity: 0.8; }
+        .contact-links a { display: block; color: var(--text-muted); text-decoration: none; margin: 10px 0; font-size: 1.1rem; }
+        
         .float-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            z-index: 1000;
-            text-decoration: none;
-            animation: bounce 2s infinite;
+            position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; animation: bounce 2s infinite;
         }
+        @keyframes bounce { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
-            .features-grid { grid-template-columns: 1fr 1fr; }
+            .logo-text { display: none; } /* Show only Icon on mobile to save space */
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">SRISHTI <span style="color:#FFD700">.</span></div>
+        <div class="brand-container">
+            <img src="./logo.png" alt="Srishti Logo" class="nav-logo" onerror="this.style.display='none'"> 
+            <div class="logo-text">SRISHTI <span style="color:#FFD700">.</span></div>
+        </div>
         <a href="tel:9838973610" class="call-btn"><i class="fas fa-phone"></i> Call Now</a>
     </nav>
 
@@ -278,15 +223,9 @@
                 <span>WELCOME TO THE FUTURE</span>
                 SRISHTI DIGITAL<br>LIBRARY
             </h1>
-            
-            <div class="hero-price-tag">
-                FEES: ₹500 / MONTH
-            </div>
-            
+            <div class="hero-price-tag">FEES: ₹500 / MONTH</div>
             <br>
-            <a href="#shifts" class="call-btn" style="padding: 15px 40px; font-size: 1.1rem;">
-                Book Your Seat
-            </a>
+            <a href="#shifts" class="call-btn" style="padding: 15px 40px; font-size: 1.1rem;">Book Your Seat</a>
         </div>
     </div>
 
@@ -299,14 +238,12 @@
                 <div class="card-main-text">07:00 - 12:00</div>
                 <div style="color: #4ade80; font-size: 0.9rem; margin-top: 5px;">• Fresh Mind Study</div>
             </div>
-
             <div class="glass-card">
                 <i class="fas fa-sun card-icon"></i>
                 <div class="card-sub-text">AFTERNOON BATCH</div>
                 <div class="card-main-text">12:00 - 05:00</div>
                 <div style="color: #facc15; font-size: 0.9rem; margin-top: 5px;">• Deep Focus Zone</div>
             </div>
-
             <div class="glass-card">
                 <i class="fas fa-moon card-icon"></i>
                 <div class="card-sub-text">EVENING BATCH</div>
@@ -316,80 +253,60 @@
         </div>
     </section>
 
+    <section class="section" style="background: #000;">
+        <h2 class="section-title">Latest Updates</h2>
+        <div class="poster-container">
+            <img src="./poster.jpg" alt="Library Details Poster" class="poster-img">
+        </div>
+    </section>
+
     <section class="section" style="background: #111;">
         <h2 class="section-title">Why Choose Us?</h2>
         <div class="features-grid">
-            <div class="feature-item">
-                <i class="fas fa-wifi"></i>
-                <p>Superfast Wi-Fi</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-snowflake"></i>
-                <p>Fully AC Hall</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-battery-full"></i>
-                <p>Power Backup</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-video"></i>
-                <p>CCTV Security</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-tint"></i>
-                <p>RO Cold Water</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-newspaper"></i>
-                <p>Daily Newspaper</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-bolt"></i>
-                <p>Charging Point</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-user-shield"></i>
-                <p>Disciplined Area</p>
-            </div>
+            <div class="feature-item"><i class="fas fa-wifi"></i><p>Superfast Wi-Fi</p></div>
+            <div class="feature-item"><i class="fas fa-snowflake"></i><p>Fully AC Hall</p></div>
+            <div class="feature-item"><i class="fas fa-battery-full"></i><p>Power Backup</p></div>
+            <div class="feature-item"><i class="fas fa-video"></i><p>CCTV Security</p></div>
+            <div class="feature-item"><i class="fas fa-tint"></i><p>RO Cold Water</p></div>
+            <div class="feature-item"><i class="fas fa-newspaper"></i><p>Daily Newspaper</p></div>
+            <div class="feature-item"><i class="fas fa-bolt"></i><p>Charging Point</p></div>
+            <div class="feature-item"><i class="fas fa-user-shield"></i><p>Disciplined Area</p></div>
         </div>
     </section>
 
     <section class="section">
         <h2 class="section-title">Our Management Team</h2>
         <div class="grid-container">
-            
             <div class="glass-card">
                 <i class="fas fa-user-tie card-icon"></i>
                 <div class="role-badge">MANAGING DIRECTOR</div>
                 <div class="card-main-text" style="font-size: 1.5rem;">Ravi Sir</div>
                 <div style="color: #a0a0a0; font-size: 0.9rem;">(M.D. Sir)</div>
             </div>
-
             <div class="glass-card">
                 <i class="fas fa-briefcase card-icon"></i>
                 <div class="role-badge">CEO</div>
                 <div class="card-main-text" style="font-size: 1.5rem;">Vipin Tiwari</div>
                 <div style="color: #a0a0a0; font-size: 0.9rem;">Chief Executive Officer</div>
             </div>
-
             <div class="glass-card">
                 <i class="fas fa-lightbulb card-icon"></i>
                 <div class="role-badge">ADVISOR</div>
                 <div class="card-main-text" style="font-size: 1.5rem;">Sudhanshu Shukla</div>
                 <div style="color: #a0a0a0; font-size: 0.9rem;">Strategic Guide</div>
             </div>
-
             <div class="glass-card">
                 <i class="fas fa-laptop-code card-icon"></i>
                 <div class="role-badge">OPERATOR</div>
                 <div class="card-main-text" style="font-size: 1.5rem;">Anuj Yadav</div>
                 <div style="color: #a0a0a0; font-size: 0.9rem;">System Admin</div>
             </div>
-
         </div>
     </section>
 
     <footer>
+        <img src="./logo.png" alt="Srishti Logo" class="footer-logo">
+        
         <h2 style="color: white; margin-bottom: 20px;">VISIT US</h2>
         <p style="color: #aaa; margin-bottom: 30px;">Kamela Chauraha, Haidergarh, Barabanki</p>
         
