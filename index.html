@@ -3,324 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Srishti Digital Library | Premium Study Zone</title>
+    <title>Srishti Digital Library | Smart Study Destination</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- THEME VARIABLES --- */
+        /* --- PROFESSIONAL THEME 2025 --- */
         :root {
-            --bg-dark: #0a0a0a;
-            --surface-dark: #121212;
-            --primary-gradient: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
+            --primary-blue: #003366; /* Royal Blue from Poster */
+            --primary-gold: #FFD700; /* Gold from Poster */
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        
+        body { background-color: var(--light-bg); color: var(--text-dark); overflow-x: hidden; }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 20%);
-        }
-
-        /* --- NAVBAR WITH LOGO --- */
+        /* --- 1. NAVBAR (Brand Identity) --- */
         nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-            background: rgba(10, 10, 10, 0.9);
-            border-bottom: var(--glass-border);
-            padding: 0.8rem 5%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
         }
 
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* LOGO SETTING */
+        .brand-box { display: flex; align-items: center; gap: 12px; }
+        
+        /* LOGO IMAGE STYLE */
         .nav-logo {
-            height: 50px; /* Adjust size */
+            height: 55px; /* Adjust size based on your logo */
             width: auto;
-            border-radius: 50%;
-            border: 2px solid #FFD700;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
-        .logo-text {
-            font-size: 1.4rem;
-            font-weight: 900;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
             text-transform: uppercase;
+            line-height: 1;
         }
+        .brand-tag { font-size: 0.8rem; color: #b45309; font-weight: 600; letter-spacing: 1px; }
 
-        .call-btn {
-            background: var(--primary-gradient);
-            color: #000;
-            font-weight: 700;
-            padding: 0.6rem 1.2rem;
+        .btn-book {
+            background: linear-gradient(135deg, var(--primary-blue), #002244);
+            color: white;
+            padding: 12px 30px;
             border-radius: 50px;
+            font-weight: 700;
             text-decoration: none;
-            font-size: 0.9rem;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 51, 102, 0.3);
             transition: 0.3s;
         }
-        .call-btn:hover { transform: scale(1.05); }
+        .btn-book:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 51, 102, 0.4); }
 
-        /* --- HERO SECTION --- */
+        /* --- 2. HERO SECTION (First Impression) --- */
         .hero {
-            position: relative;
             height: 85vh;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            overflow: hidden;
+            color: white;
+            margin-bottom: 50px;
         }
 
         .hero-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            /* Make sure to upload hero.jpg */
-            background: url('./hero.jpg') center/cover; 
-            opacity: 0.5;
-            filter: brightness(0.6);
+            /* Upload hero.jpg to your GitHub */
+            background: linear-gradient(rgba(0, 30, 60, 0.7), rgba(0, 30, 60, 0.8)), url('./hero.jpg');
+            background-size: cover;
+            background-position: center;
             z-index: -1;
         }
-        /* Fallback color if image fails */
-        .hero { background-color: #000; }
+        /* Fallback if image fails */
+        .hero-bg { background-color: var(--primary-blue); }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
-        }
-
-        .hero-content h1 span {
-            display: block;
-            font-size: 1.2rem;
-            color: #FFD700;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .hero-price-tag {
-            display: inline-block;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid #FFD700;
-            color: #FFD700;
-            padding: 10px 25px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.5rem;
-            margin: 20px 0;
-            backdrop-filter: blur(5px);
-        }
-
-        /* --- SECTIONS --- */
-        .section { padding: 4rem 5%; }
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
-            background: linear-gradient(to right, #fff, #aaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* --- POSTER SECTION (Landscape Image) --- */
-        .poster-container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 2px solid #FFD700;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.15);
-        }
+        .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.1; margin-bottom: 15px; text-transform: uppercase; }
+        .hero h2 { font-size: 1.8rem; color: var(--primary-gold); margin-bottom: 30px; font-weight: 600; letter-spacing: 2px; }
         
-        .poster-img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .price-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 10px 25px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            margin-bottom: 30px;
         }
 
-        /* --- GRID SYSTEMS --- */
-        .grid-container {
+        /* --- 3. VISUAL FACILITY GALLERY (Cards) --- */
+        .section-title { text-align: center; font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 10px; font-weight: 800; }
+        .section-subtitle { text-align: center; color: #64748b; margin-bottom: 50px; font-size: 1.1rem; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding-bottom: 80px; }
+
+        .facility-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .glass-card {
-            background: var(--glass-bg);
-            border: var(--glass-border);
-            padding: 25px;
+        .facility-card {
+            background: white;
             border-radius: 20px;
-            backdrop-filter: blur(10px);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
             transition: 0.3s;
             position: relative;
-            overflow: hidden;
+            group: pointer;
         }
-        .glass-card:hover { background: rgba(255,255,255,0.1); border-color: #FFD700; }
+        .facility-card:hover { transform: translateY(-10px); }
 
-        .card-main-text { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .card-sub-text { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 10px; }
-        .card-icon { position: absolute; right: 20px; top: 20px; font-size: 3rem; opacity: 0.1; color: #fff; }
-        .role-badge { display: inline-block; background: rgba(255, 215, 0, 0.15); color: #FFD700; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
 
-        /* --- FEATURES --- */
-        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .feature-item { background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #333; }
-        .feature-item i { font-size: 1.8rem; color: #FFD700; margin-bottom: 10px; }
+        .card-content { padding: 25px; text-align: center; }
+        .card-title { font-size: 1.4rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 10px; }
+        .card-desc { font-size: 0.95rem; color: #64748b; }
+
+        /* --- 4. SHIFTS & PRICING (Table Style) --- */
+        .shifts-section { background: var(--primary-blue); color: white; padding: 80px 0; border-radius: 0; }
+        .shifts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+
+        .shift-box {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .shift-box:hover { background: white; color: var(--primary-blue); }
+        .shift-box:hover h3 { color: var(--primary-blue); }
+        .shift-box:hover span { color: #b45309; }
+
+        .shift-title { font-size: 1.5rem; color: var(--primary-gold); margin-bottom: 10px; }
+        .shift-time { font-size: 2rem; font-weight: 800; display: block; margin-bottom: 5px; }
+        .shift-note { font-size: 1rem; opacity: 0.8; letter-spacing: 1px; }
+
+        /* --- 5. MANAGEMENT TEAM (Round Profiles) --- */
+        .team-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 40px; }
+        
+        .team-member { text-align: center; width: 220px; }
+        .member-avatar {
+            width: 120px; height: 120px;
+            background: #e2e8f0;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3rem; color: var(--primary-blue);
+            border: 3px solid var(--primary-gold);
+        }
+        .member-name { font-size: 1.3rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 5px; }
+        .member-role { font-size: 0.9rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
+        .member-phone { color: var(--primary-blue); font-size: 0.9rem; margin-top: 5px; font-weight: bold;}
 
         /* --- FOOTER --- */
-        footer { background: #000; padding: 3rem 5% 6rem; border-top: 1px solid #333; text-align: center; }
-        .footer-logo { height: 80px; margin-bottom: 20px; opacity: 0.8; }
-        .contact-links a { display: block; color: var(--text-muted); text-decoration: none; margin: 10px 0; font-size: 1.1rem; }
-        
-        .float-btn {
-            position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; animation: bounce 2s infinite;
-        }
-        @keyframes bounce { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
+        footer { background: #0f172a; color: white; padding: 60px 5% 30px; text-align: center; }
+        .footer-logo { height: 80px; margin-bottom: 20px; filter: grayscale(100%) brightness(200%); }
+        .contact-row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 40px; }
+        .contact-item i { color: var(--primary-gold); font-size: 1.5rem; margin-bottom: 10px; }
+        .contact-item p { font-size: 1.1rem; }
 
+        /* Floating WhatsApp */
+        .float-wa {
+            position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 2000; transition: 0.3s;
+        }
+        .float-wa:hover { transform: scale(1.1); }
+
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .logo-text { display: none; } /* Show only Icon on mobile to save space */
+            .hero h1 { font-size: 2.5rem; }
+            .nav-logo { height: 40px; }
+            .brand-name { font-size: 1.2rem; }
+            .btn-book { padding: 10px 20px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="brand-container">
-            <img src="./logo.png" alt="Srishti Logo" class="nav-logo" onerror="this.style.display='none'"> 
-            <div class="logo-text">SRISHTI <span style="color:#FFD700">.</span></div>
+        <div class="brand-box">
+            <img src="./logo.png" alt="Srishti Logo" class="nav-logo" onerror="this.style.display='none'">
+            <div>
+                <div class="brand-name">SRISHTI</div>
+                <div class="brand-tag">DIGITAL LIBRARY</div>
+            </div>
         </div>
-        <a href="tel:9838973610" class="call-btn"><i class="fas fa-phone"></i> Call Now</a>
+        <a href="tel:8960662683" class="btn-book">Call Now</a>
     </nav>
 
-    <div class="hero">
+    <header class="hero">
         <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1>
-                <span>WELCOME TO THE FUTURE</span>
-                SRISHTI DIGITAL<br>LIBRARY
-            </h1>
-            <div class="hero-price-tag">FEES: ₹500 / MONTH</div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <h2>WELCOME TO HAIDERGARH'S</h2>
+            <h1>SMART STUDY<br>DESTINATION</h1>
+            
+            <div class="price-badge">₹500 / MONTH</div>
             <br>
-            <a href="#shifts" class="call-btn" style="padding: 15px 40px; font-size: 1.1rem;">Book Your Seat</a>
+            <a href="#contact" class="btn-book" style="font-size: 1.2rem; padding: 15px 40px;">Book Your Seat</a>
         </div>
-    </div>
+    </header>
 
-    <section id="shifts" class="section">
-        <h2 class="section-title">Select Your Shift</h2>
-        <div class="grid-container">
-            <div class="glass-card">
-                <i class="fas fa-coffee card-icon"></i>
-                <div class="card-sub-text">MORNING BATCH</div>
-                <div class="card-main-text">07:00 - 12:00</div>
-                <div style="color: #4ade80; font-size: 0.9rem; margin-top: 5px;">• Fresh Mind Study</div>
-            </div>
-            <div class="glass-card">
-                <i class="fas fa-sun card-icon"></i>
-                <div class="card-sub-text">AFTERNOON BATCH</div>
-                <div class="card-main-text">12:00 - 05:00</div>
-                <div style="color: #facc15; font-size: 0.9rem; margin-top: 5px;">• Deep Focus Zone</div>
-            </div>
-            <div class="glass-card">
-                <i class="fas fa-moon card-icon"></i>
-                <div class="card-sub-text">EVENING BATCH</div>
-                <div class="card-main-text">05:00 - 08:30</div>
-                <div style="color: #60a5fa; font-size: 0.9rem; margin-top: 5px;">• Review & Revise</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: #000;">
-        <h2 class="section-title">Latest Updates</h2>
-        <div class="poster-container">
-            <img src="./poster.jpg" alt="Library Details Poster" class="poster-img">
-        </div>
-    </section>
-
-    <section class="section" style="background: #111;">
-        <h2 class="section-title">Why Choose Us?</h2>
-        <div class="features-grid">
-            <div class="feature-item"><i class="fas fa-wifi"></i><p>Superfast Wi-Fi</p></div>
-            <div class="feature-item"><i class="fas fa-snowflake"></i><p>Fully AC Hall</p></div>
-            <div class="feature-item"><i class="fas fa-battery-full"></i><p>Power Backup</p></div>
-            <div class="feature-item"><i class="fas fa-video"></i><p>CCTV Security</p></div>
-            <div class="feature-item"><i class="fas fa-tint"></i><p>RO Cold Water</p></div>
-            <div class="feature-item"><i class="fas fa-newspaper"></i><p>Daily Newspaper</p></div>
-            <div class="feature-item"><i class="fas fa-bolt"></i><p>Charging Point</p></div>
-            <div class="feature-item"><i class="fas fa-user-shield"></i><p>Disciplined Area</p></div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2 class="section-title">Our Management Team</h2>
-        <div class="grid-container">
-            <div class="glass-card">
-                <i class="fas fa-user-tie card-icon"></i>
-                <div class="role-badge">MANAGING DIRECTOR</div>
-                <div class="card-main-text" style="font-size: 1.5rem;">Ravi Sir</div>
-                <div style="color: #a0a0a0; font-size: 0.9rem;">(M.D. Sir)</div>
-            </div>
-            <div class="glass-card">
-                <i class="fas fa-briefcase card-icon"></i>
-                <div class="role-badge">CEO</div>
-                <div class="card-main-text" style="font-size: 1.5rem;">Vipin Tiwari</div>
-                <div style="color: #a0a0a0; font-size: 0.9rem;">Chief Executive Officer</div>
-            </div>
-            <div class="glass-card">
-                <i class="fas fa-lightbulb card-icon"></i>
-                <div class="role-badge">ADVISOR</div>
-                <div class="card-main-text" style="font-size: 1.5rem;">Sudhanshu Shukla</div>
-                <div style="color: #a0a0a0; font-size: 0.9rem;">Strategic Guide</div>
-            </div>
-            <div class="glass-card">
-                <i class="fas fa-laptop-code card-icon"></i>
-                <div class="role-badge">OPERATOR</div>
-                <div class="card-main-text" style="font-size: 1.5rem;">Anuj Yadav</div>
-                <div style="color: #a0a0a0; font-size: 0.9rem;">System Admin</div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <img src="./logo.png" alt="Srishti Logo" class="footer-logo">
+    <section class="container">
+        <h2 class="section-title">Premium Facilities</h2>
+        <p class="section-subtitle">Everything you need for a focused study session.</p>
         
-        <h2 style="color: white; margin-bottom: 20px;">VISIT US</h2>
-        <p style="color: #aaa; margin-bottom: 30px;">Kamela Chauraha, Haidergarh, Barabanki</p>
-        
-        <div class="contact-links">
-            <a href="tel:8960662683"><i class="fas fa-phone-alt"></i> 8960662683</a>
-            <a href="tel:9838973610"><i class="fas fa-phone-alt"></i> 9838973610</a>
-        </div>
+        <div class="facility-grid">
+            
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Study Desk" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Private Study Carrels</h3>
+                    <p class="card-desc">Individual cabins with charging points for disturbance-free study.</p>
+                </div>
+            </div>
 
-        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">
-            © 2025 Srishti Digital Library. All Rights Reserved.
-        </p>
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1517502884422-41e157d4433c?auto=format&fit=crop&w=600&q=80" alt="AC Room" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Fully Air-Conditioned</h3>
+                    <p class="card-desc">Cool and comfortable environment to beat the heat.</p>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80" alt="Wifi" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">5G High-Speed Wi-Fi</h3>
+                    <p class="card-desc">Seamless connectivity for online classes and mock tests.</p>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1598520106830-8c45c2035460?auto=format&fit=crop&w=600&q=80" alt="Computer" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Computer Facility</h3>
+                    <p class="card-desc">Dedicated systems available for exam forms and research.</p>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80" alt="CCTV" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">24x7 CCTV Security</h3>
+                    <p class="card-desc">Full monitoring for a safe and secure environment.</p>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=600&q=80" alt="Coffee" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Cafeteria & RO Water</h3>
+                    <p class="card-desc">Refreshment zone with pure cold drinking water.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="shifts-section">
+        <div class="container" style="padding-bottom: 0;">
+            <h2 class="section-title" style="color: white;">Shift Timings</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Choose a slot that suits your schedule.</p>
+            
+            <div class="shifts-grid">
+                <div class="shift-box">
+                    <h3 class="shift-title">MORNING</h3>
+                    <span class="shift-time">07:00 - 12:00</span>
+                    <span class="shift-note">1st Shift</span>
+                </div>
+                <div class="shift-box">
+                    <h3 class="shift-title">AFTERNOON</h3>
+                    <span class="shift-time">12:00 - 05:00</span>
+                    <span class="shift-note">2nd Shift</span>
+                </div>
+                <div class="shift-box">
+                    <h3 class="shift-title">EVENING</h3>
+                    <span class="shift-time">05:00 - 09:00</span>
+                    <span class="shift-note">3rd Shift</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="margin-top: 80px;">
+        <h2 class="section-title">Leadership Team</h2>
+        <div class="team-grid">
+            
+            <div class="team-member">
+                <div class="member-avatar"><i class="fas fa-user-tie"></i></div>
+                <h3 class="member-name">Ravi Sir</h3>
+                <p class="member-role">Managing Director</p>
+                <p class="member-phone">8960662683</p>
+            </div>
+
+            <div class="team-member">
+                <div class="member-avatar"><i class="fas fa-briefcase"></i></div>
+                <h3 class="member-name">Vipin Tiwari</h3>
+                <p class="member-role">Chief Executive Officer</p>
+                <p class="member-phone">9838973610</p>
+            </div>
+
+            <div class="team-member">
+                <div class="member-avatar"><i class="fas fa-laptop-code"></i></div>
+                <h3 class="member-name">Sudhanshu</h3>
+                <p class="member-role">Operator</p>
+            </div>
+
+            <div class="team-member">
+                <div class="member-avatar"><i class="fas fa-book-reader"></i></div>
+                <h3 class="member-name">Anuj Yadav</h3>
+                <p class="member-role">Library Incharge</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <img src="./logo.png" alt="Logo" class="footer-logo">
+        <div class="contact-row">
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Kamela Chauraha, Haidergarh, Barabanki</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <p>9838973610, 8960662683</p>
+            </div>
+        </div>
+        <p style="opacity: 0.5; font-size: 0.8rem;">© 2025 Srishti Digital Library. All Rights Reserved.</p>
     </footer>
 
-    <a href="https://wa.me/918960662683" class="float-btn" target="_blank">
+    <a href="https://wa.me/918960662683" class="float-wa" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
